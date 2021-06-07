@@ -3,6 +3,7 @@ import Login from './components/Login.vue'
 import Dashboard from './components/Dashboard.vue'
 import ComicView from './components/ComicView.vue'
 import ComicDetails from './components/ComicDetails.vue'
+import ArView from './components/ArView.vue'
 import { createWebHistory, createRouter } from "vue-router";
 
 const routes = [
@@ -50,6 +51,15 @@ const routes = [
             title: 'Book Detail',
         },
         component: ComicDetails
+    },
+    {
+        path: '/ar/:model',
+        name: 'AR View',
+        meta: {
+            default: true,
+            title: 'AR View',
+        },
+        component: ArView
     },
 ]
 

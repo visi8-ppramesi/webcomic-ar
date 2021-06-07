@@ -102,4 +102,8 @@ export default{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#nav{
+  position: relative;
+  z-index: 98;
+}
 </style>

@@ -1,31 +1,31 @@
 <template>
-    <div>
-        <img id="ar-1" src="../assets/comic/01-SLEEPING_AR.jpg">
+    <div class="comics-container">
+        <img :class="{glow: b1, 'fill-width': !b1}" class="glow-animation" id="ar-1" src="../assets/comic/01-SLEEPING_AR.jpg">
         <img src="../assets/comic/02-WAKING_UP.jpg">
-        <img id="ar-2" src="../assets/comic/03-KARA_HOUSE_AR.jpg">
-        <img id="ar-3" src="../assets/comic/04-KARA_WINDOW_AR.jpg">
+        <img :class="{glow: b2, 'fill-width': !b2}" class="glow-animation" id="ar-2" src="../assets/comic/03-KARA_HOUSE_AR.jpg">
+        <img :class="{glow: b3, 'fill-width': !b3}" class="glow-animation" id="ar-3" src="../assets/comic/04-KARA_WINDOW_AR.jpg">
         <img src="../assets/comic/05-KARA_WRITING.jpg">
-        <img id="ar-4" src="../assets/comic/06-KARA_LUNA_AR.jpg">
+        <img :class="{glow: b4, 'fill-width': !b4}" class="glow-animation" id="ar-4" src="../assets/comic/06-KARA_LUNA_AR.jpg">
         <img src="../assets/comic/07-KARA_LUNA_TABLE.jpg">
     </div>
     <div class="tester">
-        <div v-show="b1">
-            <router-link to="/">
+        <div :class="{button: b1, 'hidden-button': !b1}" class="animated fixed">
+            <router-link to="/ar/testing">
                 <img src="../assets/Record.png" alt="">
             </router-link>
         </div>
-        <div v-show="b2">
-            <router-link to="/">
+        <div :class="{button: b2, 'hidden-button': !b2}" class="animated fixed">
+            <router-link to="/ar/hello">
                 <img src="../assets/Record.png" alt="">
             </router-link>
         </div>
-        <div v-show="b3">
-            <router-link to="/">
+        <div :class="{button: b3, 'hidden-button': !b3}" class="animated fixed">
+            <router-link to="/ar/terter">
                 <img src="../assets/Record.png" alt="">
             </router-link>
         </div>
-        <div v-show="b4">
-            <router-link to="/">
+        <div :class="{button: b4, 'hidden-button': !b4}" class="animated fixed">
+            <router-link to="/ar/xcvbxcvb">
                 <img src="../assets/Record.png" alt="">
             </router-link>
         </div>
@@ -88,12 +88,14 @@ export default{
         },
         isInViewport(element) {
             const rect = element.getBoundingClientRect();
-            return (
+            const bottom = rect.bottom < (window.innerHeight / 1.5) ? rect.bottom : rect.bottom / 1.5
+            const visible = (
                 rect.top >= 0 &&
                 rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
                 rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
+            )
+            return visible;
         }
     }
 }
@@ -103,7 +105,48 @@ export default{
 .tester{
     position: fixed;
     z-index: 9999;
+    /* bottom: 0;
+    left: calc(50% - 62px); */
+}
+.glow{
+    box-shadow: 0 0 15px 3px #FFF, 0 0 8px 2px #f0f, 0 0 5px 5px #0FF;
+    /* width: 80.5vw; */
+    z-index: 99;
+    margin-bottom:2px;
+    transform: scale(0.98, 0.99) !important;
+    /* transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease !important; */
+}
+.glow-animation{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.full-width{
+    width: 100%;
+}
+.comics-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button{
+    opacity: 1;
     bottom: 0;
     left: calc(50% - 62px);
+}
+.hidden-button{
+    opacity: 0;
+}
+.animated{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.fixed{
+    position:fixed;
 }
 </style>
