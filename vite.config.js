@@ -30,7 +30,15 @@ export default defineConfig({
     alias: {
       'aframe': 'https://aframe.io/releases/1.2.0/aframe.min.js'
     }
-  }
+  },
+  transforms: [
+    {
+      test: ({ path }) => path.endsWith('.html'),
+      transform({ code }) {
+        return `export default ${JSON.stringify(code)}`
+      }
+    }
+  ]
   // build: {
   //   rollupOptions: {
   //     external: ['aframe'],

@@ -1,31 +1,50 @@
 <template>
+    <div class="viewport-info bg-gray-50">
+       <div>top: {{top}}</div>
+       <div>bottom: {{bottom}}</div>
+       <div>left: {{left}}</div>
+       <div>right: {{right}}</div>
+       <div>ih: {{iHeight}}</div>
+       <div>ch: {{cHeight}}</div>
+       <div>iw: {{iWidth}}</div>
+       <div>cw: {{cWidth}}</div>
+       <div>in vw?: {{vis ? 'yes' : 'no'}}</div>
+    </div>
     <div class="comics-container">
-        <img :class="{glow: b1, 'fill-width': !b1}" class="glow-animation" id="ar-1" src="../assets/comic/01-SLEEPING_AR.jpg">
+        <router-link to="/ar/sleeping">
+            <img :class="{glow: b1, 'fill-width': !b1}" class="glow-animation" id="ar-1" src="../assets/comic/01-SLEEPING_AR.jpg">
+        </router-link>
         <img src="../assets/comic/02-WAKING_UP.jpg">
-        <img :class="{glow: b2, 'fill-width': !b2}" class="glow-animation" id="ar-2" src="../assets/comic/03-KARA_HOUSE_AR.jpg">
-        <img :class="{glow: b3, 'fill-width': !b3}" class="glow-animation" id="ar-3" src="../assets/comic/04-KARA_WINDOW_AR.jpg">
+        <router-link to="/ar/house">
+            <img :class="{glow: b2, 'fill-width': !b2}" class="glow-animation" id="ar-2" src="../assets/comic/03-KARA_HOUSE_AR.jpg">
+        </router-link>
+        <router-link to="/ar/window">
+            <img :class="{glow: b3, 'fill-width': !b3}" class="glow-animation" id="ar-3" src="../assets/comic/04-KARA_WINDOW_AR.jpg">
+        </router-link>
         <img src="../assets/comic/05-KARA_WRITING.jpg">
-        <img :class="{glow: b4, 'fill-width': !b4}" class="glow-animation" id="ar-4" src="../assets/comic/06-KARA_LUNA_AR.jpg">
+        <router-link to="/ar/luna">
+            <img :class="{glow: b4, 'fill-width': !b4}" class="glow-animation" id="ar-4" src="../assets/comic/06-KARA_LUNA_AR.jpg">
+        </router-link>
         <img src="../assets/comic/07-KARA_LUNA_TABLE.jpg">
     </div>
     <div class="tester">
         <div :class="{button: b1, 'hidden-button': !b1}" class="animated fixed">
-            <router-link to="/ar/testing">
+            <router-link to="/ar/sleeping">
                 <img src="../assets/Record.png" alt="">
             </router-link>
         </div>
         <div :class="{button: b2, 'hidden-button': !b2}" class="animated fixed">
-            <router-link to="/ar/hello">
+            <router-link to="/ar/house">
                 <img src="../assets/Record.png" alt="">
             </router-link>
         </div>
         <div :class="{button: b3, 'hidden-button': !b3}" class="animated fixed">
-            <router-link to="/ar/terter">
+            <router-link to="/ar/window">
                 <img src="../assets/Record.png" alt="">
             </router-link>
         </div>
         <div :class="{button: b4, 'hidden-button': !b4}" class="animated fixed">
-            <router-link to="/ar/xcvbxcvb">
+            <router-link to="/ar/luna">
                 <img src="../assets/Record.png" alt="">
             </router-link>
         </div>
@@ -56,7 +75,16 @@ export default{
             b1: false,
             b2: false,
             b3: false,
-            b4: false
+            b4: false,
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            iHeight: 0,
+            cHeight: 0,
+            iWidth: 0,
+            cWidth: 0,
+            vis: false,
         }
     },
     methods:{
@@ -80,21 +108,33 @@ export default{
             }else{
                 this.b3 = false
             }
-            if(this.isInViewport(ar4)){
+            if(this.isInViewport(ar4, true)){
                 this.b4 = true
             }else{
                 this.b4 = false
             }
         },
-        isInViewport(element) {
+        isInViewport(element, updateShit = false) {
             const rect = element.getBoundingClientRect();
             const bottom = rect.bottom < (window.innerHeight / 1.5) ? rect.bottom : rect.bottom / 1.5
+            const right = rect.right - 1
             const visible = (
                 rect.top >= 0 &&
                 rect.left >= 0 &&
                 bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                right <= (window.innerWidth || document.documentElement.clientWidth)
             )
+            if(updateShit){
+                this.top = Math.round(rect.top)
+                this.left = rect.left
+                this.bottom = Math.round(bottom)
+                this.right = right
+                this.iHeight = window.innerHeight
+                this.cHeight = document.documentElement.clientHeight
+                this.iWidth = window.innerWidth
+                this.cWidth = document.documentElement.clientWidth
+                this.vis = visible
+            }
             return visible;
         }
     }
@@ -102,6 +142,12 @@ export default{
 </script>
 
 <style lang="postcss">
+.viewport-info{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+}
 .tester{
     position: fixed;
     z-index: 9999;
