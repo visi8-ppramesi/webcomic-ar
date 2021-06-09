@@ -10,9 +10,14 @@
               <XIcon v-else class="text-gray-300 block h-6 w-6" aria-hidden="true" />
             </DisclosureButton>
           </div>
-          <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex-1 flex items-center justify-evenly sm:items-stretch sm:justify-start px-16">
+            <div class="flex-none items-center text-gray-300">
+              <button class='w-auto bg-green-600 hover:bg-green-500 rounded-lg shadow-xl font-medium text-white px-2 py-1' @click="$router.go(-1)">Back</button>
+            </div>
             <div class="flex-shrink-0 flex items-center text-gray-300">
               {{$route.name}}
+            </div>
+            <div class="flex-none items-center text-gray-300" style="width: 54px">
             </div>
             <div class="hidden sm:block sm:ml-6">
               <div class="flex space-x-4">
@@ -60,7 +65,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { BellIcon, MenuAlt2Icon, XIcon, DotsVerticalIcon } from '@heroicons/vue/outline'
+import { BellIcon, MenuAlt2Icon, XIcon, DotsVerticalIcon, ChevronLeftIcon } from '@heroicons/vue/outline'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', current: true },

@@ -1,29 +1,18 @@
 <template>
-    <div class="viewport-info bg-gray-50">
-       <div>top: {{top}}</div>
-       <div>bottom: {{bottom}}</div>
-       <div>left: {{left}}</div>
-       <div>right: {{right}}</div>
-       <div>ih: {{iHeight}}</div>
-       <div>ch: {{cHeight}}</div>
-       <div>iw: {{iWidth}}</div>
-       <div>cw: {{cWidth}}</div>
-       <div>in vw?: {{vis ? 'yes' : 'no'}}</div>
-    </div>
     <div class="comics-container">
-        <router-link to="/ar/sleeping">
-            <img :class="{glow: b1, 'fill-width': !b1}" class="glow-animation" id="ar-1" src="../assets/comic/01-SLEEPING_AR.jpg">
+        <router-link :class="{glow: b1, 'fill-width': !b1}" class="glow-animation" to="/ar/sleeping">
+            <img id="ar-1" src="../assets/comic/01-SLEEPING_AR.jpg">
         </router-link>
         <img src="../assets/comic/02-WAKING_UP.jpg">
-        <router-link to="/ar/house">
-            <img :class="{glow: b2, 'fill-width': !b2}" class="glow-animation" id="ar-2" src="../assets/comic/03-KARA_HOUSE_AR.jpg">
+        <router-link :class="{glow: b2, 'fill-width': !b2}" class="glow-animation" to="/ar/house">
+            <img id="ar-2" src="../assets/comic/03-KARA_HOUSE_AR.jpg">
         </router-link>
-        <router-link to="/ar/window">
-            <img :class="{glow: b3, 'fill-width': !b3}" class="glow-animation" id="ar-3" src="../assets/comic/04-KARA_WINDOW_AR.jpg">
+        <router-link :class="{glow: b3, 'fill-width': !b3}" class="glow-animation" to="/ar/window">
+            <img id="ar-3" src="../assets/comic/04-KARA_WINDOW_AR.jpg">
         </router-link>
         <img src="../assets/comic/05-KARA_WRITING.jpg">
-        <router-link to="/ar/luna">
-            <img :class="{glow: b4, 'fill-width': !b4}" class="glow-animation" id="ar-4" src="../assets/comic/06-KARA_LUNA_AR.jpg">
+        <router-link :class="{glow: b4, 'fill-width': !b4}" class="glow-animation" to="/ar/luna">
+            <img id="ar-4" src="../assets/comic/06-KARA_LUNA_AR.jpg">
         </router-link>
         <img src="../assets/comic/07-KARA_LUNA_TABLE.jpg">
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <scene-loader></scene-loader>
+    <scene-loader :scene="$route.params.scene"></scene-loader>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
         SceneLoader
     },
     mounted(){
-        
+
     },
     methods: {
     }

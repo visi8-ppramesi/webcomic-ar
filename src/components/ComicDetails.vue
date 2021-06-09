@@ -1,6 +1,6 @@
 <template>
     <div class="p-1">
-        <div>
+        <div style="position:relative">
             <router-link to="/view" class="read-button">
                 <img src="../assets/Read.png" alt="">
             </router-link>
@@ -29,7 +29,7 @@ export default{
     position: absolute;
     z-index: 999;
     width: 25vw;
-    top: 24vh;
+    top: 23%;
     right: 1rem;
 }
 </style>

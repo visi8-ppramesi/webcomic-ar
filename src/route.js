@@ -53,7 +53,7 @@ const routes = [
         component: ComicDetails
     },
     {
-        path: '/ar/:model',
+        path: '/ar/:scene',
         name: 'AR View',
         meta: {
             default: true,

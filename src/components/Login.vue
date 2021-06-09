@@ -40,7 +40,7 @@ export default{
     /* max-width: 1200px; */
     /* height: 100vh; */
     background:
-        url(../assets/Logo.png) calc(50vw - 40px) calc(10vh)/190px 160px no-repeat,
+        url(../assets/Logo.png) calc(50vw - 50px) calc(10vh)/215px 150px no-repeat,
         url(../assets/bg1.png) calc(100% + 20px) calc(100% - 20px)/calc(75vw) calc(75vw) no-repeat,
         url(../assets/bg2.png) calc(100% - 140px) calc(100% - 20px)/calc(75vw) calc(75vw) no-repeat,
         url(../assets/bg3.png) calc(100% + 25px) calc(100% - 80px)/calc(100vw + 100px) calc(100vw + 100px) no-repeat;
